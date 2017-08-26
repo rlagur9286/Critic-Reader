@@ -1,8 +1,6 @@
-
 const ESCAPE_KEY = 27;
 
 class RateBox {
-
   constructor() {
     this.nRates = 0;
     this.rate = null;
@@ -12,10 +10,10 @@ class RateBox {
   }
 
   setNewsData(info) {
-
     let result = info.json.result;
     let personCnt = result.num_of_person;
     let rateOfNews = result.rate_of_news;
+    let percent = Math.random() * 100;
 
     let section = document.createElement('div');
     section.innerHTML = `
@@ -32,9 +30,8 @@ class RateBox {
         </div>
         <div class="chart-wrapper">
           <div class="info">
-            <h1>${rateOfNews}%</h1>
+            <h1>${Math.round(percent)}%</h1>
           </div>
-          <svg class="chart" width="200" height="200"><g transform="translate(100,100)"><path class="arc" fill="url(#grad1)" d="M4.2862637970157365e-15,-70A70,70 0 1,1 -41.14496766047313,-56.631189606246316L-38.793826651303235,-53.39512162874652A66,66 0 1,0 4.0413344371862654e-15,-66Z"></path></g></svg>
         </div>
         <div>
           <h3>신뢰할만한 기사 인가요?</h3>
@@ -44,21 +41,36 @@ class RateBox {
           </ul>
         </div>
       </div>
-    `
-    this.element.appendChild(section);
+    `;
 
+    let arc = d3.svg.arc()
+        .innerRadius(66)
+        .outerRadius(70)
+        .startAngle(0)
+        .endAngle(percent / 50 * Math.PI);
+
+    let svg = d3.select(section.querySelector('.chart-wrapper'))
+        .append("svg")
+        .attr("width", 200)
+        .attr("height", 200)
+        .append("g")
+        .attr("transform", "translate(100,100)");
+
+    svg.append("path")
+        .attr("class", "arc")
+        .attr("fill", "url(#grad1)")
+        .attr("d", arc);
+
+    this.element.appendChild(section);
   }
 
   getElement() {
     return this.element;
   }
-
-
-
 }
 
-class Info {
 
+class Info {
   constructor(json) {
       this.json = json
   }
@@ -82,19 +94,10 @@ class Info {
 
 
 class InfoBox {
-
   constructor() {
     this.element = document.createElement('div');
     this.element.classList.add('manpower-news-info-box');
     this.element.classList.add('manpower-box');
-    this.element.addEventListener('click', event =>{
-
-    });
-    document.addEventListener('keydown', event => {
-        if(event.keyCode === ESCAPE_KEY){
-          this.element.style.display = 'none';
-        }
-    })
   }
 
   setHasFishWord(info) {
@@ -107,7 +110,7 @@ class InfoBox {
     section.innerHTML = `
       <div>총 ${count}개의 신뢰성 저하 단어가 있습니다. (${wordArrayList})</div>
       <div>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</div>
-    `
+    `;
     this.element.appendChild(section);
   }
 
@@ -119,7 +122,7 @@ class InfoBox {
     let section = document.createElement('div');
     section.innerHTML = `
       <div>${count}개의 긍정적인 단어가 있습니다. (${wordArrayList})</div>
-    `
+    `;
     this.element.appendChild(section);
   }
 
@@ -129,25 +132,14 @@ class InfoBox {
 }
 
 class Content {
-
   constructor() {
     this.element = document.createElement('div');
   }
-
-  setHilightWord() {
-    // this.element.innerHTML('');
-  }
-
-  setFictionWord() {
-
-  }
-
 }
 
 
 let getPageInfo = (url, callback) => {
-
-  baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+  let baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
   url = encodeURIComponent(window.location.href);
 
   fetch(baseUrl + '?news_url=' + url).then(response => {
@@ -157,9 +149,7 @@ let getPageInfo = (url, callback) => {
     let info = new Info(json);
     callback(info);
   })
-
-}
-
+};
 
 
 console.log('client run');

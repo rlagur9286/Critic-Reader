@@ -1,3 +1,4 @@
+
 {
   "manifest_version": 2,
   "name": "Is cake a lie",
@@ -17,6 +18,7 @@
       ],
       "css": ["main.css"],
       "js": [
+        "lib/d3.v3.min.js",
         "client.js",
         "content_scripts/naver.js"
       ],
@@ -28,6 +30,7 @@
       ],
       "css": ["main.css"],
       "js": [
+        "lib/d3.v3.min.js",
         "client.js",
         "content_scripts/daum.js"
       ],
@@ -36,8 +39,6 @@
   }],
   "permissions": [
     "activeTab",
-    "tabs",
-    "http://www.facebook.com/*",
-    "https://www.facebook.com/*"
+    "tabs"
   ]
 }
