@@ -11,6 +11,8 @@ class RateBox {
 
 
   setNewsData(info) {
+    console.log(info);
+    
     let result = info.json.result;
     let personCnt = result.num_of_person;
     let rateOfNews = result.rate_of_news;
@@ -46,8 +48,53 @@ class RateBox {
 
     section.querySelector('#btn-yes').addEventListener('click', () => {
 
+      var yesBtn = document.getElementById("yesBtn");
+      yesBtn.addEventListener("click", () => {
+        console.log('클릭 이벤트 받음');
+
+        let baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+        url = window.location.href;
+
+        let data = new FormData();
+        data.append('yes', 1);
+        data.append('news_url', url);
+
+        fetch(baseUrl, {
+          method : 'POST',
+          body : data
+        }).then(response => {
+          return response.json()
+        }).then(json => {
+          console.log(json);
+          let info = new Info(json);
+          rateBox.setNewsData(info);
+        });
+      });
+
     });
     section.querySelector('#btn-no').addEventListener('click', () => {
+
+      noBtn.addEventListener("click", () => {
+        console.log('클릭 이벤트 받음');
+
+        let baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+        url = window.location.href;
+
+        let data = new FormData();
+        data.append('no', 1);
+        data.append('news_url', url);
+
+        fetch(baseUrl, {
+          method : 'POST',
+          body : data
+        }).then(response => {
+          return response.json()
+        }).then(json => {
+          console.log(json);
+          let info = new Info(json);
+          rateBox.setNewsData(info);
+        });
+      });
 
     });
 
