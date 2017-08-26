@@ -13,8 +13,20 @@ getPageInfo('', info => {
     infoBox.setTrustWord(info);
   }
 
+  if(!info.hasFishngWord() && !info.hasTrustWord()) {
+    return;
+  }
 
-  document.body.appendChild(infoBox.getElement());
+  let rateBox = new RateBox();
+  rateBox.setNewsData(info);
+
+  let wrapper = document.createElement('div');
+  wrapper.classList.add('manpower-box-wrapper');
+  wrapper.appendChild(infoBox.getElement());
+  wrapper.appendChild(rateBox.getElement());
+
+  document.body.appendChild(wrapper);
+
 
   let bodyContainer = document.querySelector('#harmonyContainer');
   bodyContainer.innerHTML = info.getContent();

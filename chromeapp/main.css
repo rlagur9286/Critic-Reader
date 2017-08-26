@@ -1,6 +1,10 @@
-.manpower-news-info-box {
-  text-align: left;
-  line-height: 34px;
+.manpower-box-wrapper {
+  position: fixed;
+  top: 90px;
+  right: 31px;
+  z-index: 999999999999999999999999;
+}
+.manpower-box {
   background: rgba(29, 29, 29, 0.84);
   color: #f7f7f7;
   padding: 20px;
@@ -9,10 +13,41 @@
   font-family: sans-serif;
   font-weight: bold;
   box-shadow: 0 10px 41px rgba(0,0,0,0.5);
-  position: fixed;
-  top: 122px;
-  right: 31px;
-  z-index: 999999999999999999999999;
+
+  text-align: left;
+  line-height: 34px;
+}
+.manpower-rate-box {
+  text-align: center;
+  width: 200px;
+  float: right;
+  margin-top: 50px;
+}
+.manpower-rate-box h3 {
+  color: #A0A0A0;
+  font-size: 13px;
+}
+.manpower-rate-box h1 {
+  font-size: 40px;
+}
+.manpower-rate-box .chart-wrapper .info {
+  position: absolute;
+  line-height: 200px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 200px;
+}
+.manpower-rate-box .chart-wrapper .chart {
+
+}
+.manpower-rate-box ul.actions li.action {
+  list-style: none;
+  display: inline-block;
+  height: 66px;
+  border: 1px solid #979797;
+  min-width: 84px;
+  line-height: 66px;
+  border-radius: 33px;
 }
 
 .fiction, .fishing {
