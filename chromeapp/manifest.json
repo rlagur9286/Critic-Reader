@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Is cake a lie",
+  "description": "Is cake a lie?",
+  "version": "1.0",
+  "icons": {
+    "16": "icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [{
+      "matches": [
+        "http://news.naver.com/*"
+      ],
+      "css": ["main.css"],
+      "js": [
+        "client.js",
+        "content_scripts/naver.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+  }, {
+      "matches": [
+        "http://v.media.daum.net/*"
+      ],
+      "css": ["main.css"],
+      "js": [
+        "client.js",
+        "content_scripts/daum.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+  }],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://www.facebook.com/*",
+    "https://www.facebook.com/*"
+  ]
+}
