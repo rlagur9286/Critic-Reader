@@ -34,14 +34,15 @@ class RateBox {
           </div>
         </div>
         <div>
-          <h3>신뢰할만한 기사 인가요?</h3>
+          <h3>객관적인 기사인가요?</h3>
           <ul class="actions">
-            <li class="action">네</li>
-            <li class="action">아니요</li>
+            <li class="action" id = "yesBtn">네</li>
+            <li class="action" id = "noBtn">아니요</li>
           </ul>
         </div>
       </div>
     `;
+
 
     let arc = d3.svg.arc()
         .innerRadius(66)
