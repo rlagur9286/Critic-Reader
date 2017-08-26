@@ -1,4 +1,3 @@
-
 const ESCAPE_KEY = 27;
 
 
@@ -12,7 +11,6 @@ class RateBox {
   }
 
   setNewsData(info) {
-
     let result = info.json.result;
     let personCnt = result.num_of_person;
     let rateOfNews = result.rate_of_news;

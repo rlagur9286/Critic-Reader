@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 getPageInfo('', info => {
@@ -34,3 +35,31 @@ getPageInfo('', info => {
 
 
 console.log('naver run');
+=======
+
+
+getPageInfo('', info => {
+  let infoBox = new InfoBox();
+  let content = new Content();
+
+
+  if (info.hasFishngWord()) {
+    infoBox.setHasFishWord(info);
+  }
+
+  if (info.hasTrustWord()) {
+    infoBox.setTrustWord(info);
+  }
+
+  document.body.appendChild(infoBox.getElement());
+
+  let bodyContainer = document.querySelector('#articleBodyContents');
+  bodyContainer.innerHTML = info.getContent();
+
+  let titleContainer = document.querySelector('#articleTitle');
+  titleContainer.innerHTML = info.getTitle();
+
+})
+
+console.log('naver run');
+>>>>>>> af41e17552058151234cce1f7c05ec4adc54462f
