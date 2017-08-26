@@ -1,0 +1,56 @@
+{
+  "manifest_version": 2,
+  "name": "Is cake a lie",
+  "description": "Is cake a lie?",
+  "version": "1.0",
+  "icons": {
+    "16": "icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [{
+      "matches": [
+        "http://www.facebook.com/*",
+        "https://www.facebook.com/*"
+      ],
+      "css": ["main.css"],
+      "js": [
+        "client.js",
+        "content_scripts/facebook.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+  }, {
+    "matches": [
+      "https://twitter.com/*"
+    ],
+    "css": ["main.css"],
+    "js": [
+      "client.js",
+      "content_scripts/twitter.js"
+    ],
+    "run_at": "document_end",
+    "all_frames": false
+  }, {
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "css": ["main.css"],
+    "js": [
+      "client.js",
+      "content_scripts/others.js"
+    ],
+    "run_at": "document_end",
+    "all_frames": false
+  }],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://www.facebook.com/*",
+    "https://www.facebook.com/*"
+  ]
+}
