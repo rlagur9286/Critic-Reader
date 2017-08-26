@@ -1,4 +1,4 @@
-const ESCAPE_KEY = 27;
+const ESCAPE_KEY_CODE = 27;
 
 
 let rate = (value, callback) => {
@@ -130,6 +130,12 @@ class RateBox {
         this.setNewsData(new Info(json));
       })
     });
+
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === ESCAPE_KEY_CODE) {
+        this.element.parentNode.removeChild(this.element);
+      }
+    })
   }
 }
 
