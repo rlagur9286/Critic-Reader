@@ -1,103 +1,55 @@
-a {
-    color: inherit;
+.manpower-box-wrapper {
+  position: fixed;
+  top: 90px;
+  right: 31px;
+  z-index: 999999999999999999999999;
 }
+.manpower-box {
+  background: rgba(29, 29, 29, 0.84);
+  color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: bold;
+  box-shadow: 0 10px 41px rgba(0,0,0,0.5);
 
-.fc-fixed-container {
-    z-index: 99999;
-    box-sizing: border-box;
-    position: fixed;
-    width: 100%;
-    height: 45px;
-    line-height: 45px;
-    background: white;
-    top: 0;
-    left: 0;
-    border-bottom: 1px solid #a1a1a1;
+  text-align: left;
+  line-height: 34px;
 }
-
-.fc-fixed-container .fc-status {
-    padding: 0 20px 0;
+.manpower-rate-box {
+  text-align: center;
+  width: 200px;
+  float: right;
+  margin-top: 50px;
 }
-
-.fc-fixed-container .fc-status.fc-false {
-    background: #a20404;
-    color: white;
+.manpower-rate-box h3 {
+  color: #A0A0A0;
+  font-size: 13px;
 }
-
-.fc-status-bar {
-    height: 24px;
-    text-align: right;
-    position: relative;
-    z-index: 8;
-    padding: 0 10px;
-    zoom: 1;
+.manpower-rate-box h1 {
+  font-size: 40px;
 }
-
-.fc-status-bar.fc-disputed {
-    background: #a20404;
-    color: white;
+.manpower-rate-box .chart-wrapper .info {
+  position: absolute;
+  line-height: 200px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 200px;
 }
-
-.fc-status-bar.fc-verified {
-
-}
-
-.fc-status-bar.fc-not-verified {
+.manpower-rate-box .chart-wrapper .chart {
 
 }
-
-.fc-status-bar span {
-    line-height: 24px;
+.manpower-rate-box ul.actions li.action {
+  list-style: none;
+  display: inline-block;
+  height: 66px;
+  border: 1px solid #979797;
+  min-width: 84px;
+  line-height: 66px;
+  border-radius: 33px;
 }
 
-.fc-mark.fc-mark-verified {
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    background: #4FA218;
-    color: white;
-    text-align: center;
-    float: right;
-    font-weight: bold;
+.fiction, .fishing {
+  background: #FFBEB8;
 }
-
-.fc-status-bar .fc-menu {
-    display: none;
-    position: absolute;
-    z-index: 20;
-    background: white;
-    top: 10px;
-    right: 0;
-    width: 150px;
-    border-radius: 3px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    color: rgb(29, 33, 41);
-    font-size: 12px;
-    text-align: left;
-    border: 1px solid rgba(0, 0, 0, .15);
-    overflow: hidden;
-}
-
-.fc-status-bar .fc-menu.opened {
-    display: block;
-}
-
-.fc-status-bar .fc-menu .fc-menu-item {
-    line-height: 24px;
-    position: relative;
-}
-
-.fc-status-bar .fc-menu .fc-menu-item a {
-    display: block;
-    height: 100%;
-    padding: 0 12px;
-}
-.fc-status-bar .fc-menu .fc-menu-item a:hover {
-    background: #4267B2;
-    color: white;
-    text-decoration: none;
-    /*border: 1px solid #29487D;*/
-}
-
-
-/*F H king*/
