@@ -9,9 +9,10 @@ getPageInfo('', info => {
     infoBox.setHasFishWord(info);
   }
 
-  if (info.hasFictionWord()) {
-    infoBox.setFictionWord();
+  if (info.hasTrustWord()) {
+    infoBox.setTrustWord(info);
   }
+
   document.body.appendChild(infoBox.getElement());
 
   let bodyContainer = document.querySelector('#articleBodyContents');

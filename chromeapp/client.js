@@ -8,11 +8,11 @@ class Info {
   }
 
   hasFishngWord() {
-    return this.json.result.cnt > 0;
+    return this.json.result.critic_cnt > 0;
   }
 
-  hasFictionWord() {
-    return this.json.result.cnt > 0;
+  hasTrustWord() {
+    return this.json.result.trust_cnt > 0;
   }
 
   getTitle() {
@@ -43,20 +43,25 @@ class InfoBox {
   setHasFishWord(info) {
     console.log(info);
     let result = info.json.result;
-    let count = result.cnt;
+    let count = result.critic_cnt;
     let wordArrayList = result.critic_words.join(', ');
 
     let section = document.createElement('div');
     section.innerHTML = `
-      <div>${count}개의 낚시성 단어가 있습니다. (${wordArrayList})</div>
+      <div>${count}개의 신뢰성 저하 단어가 있습니다. (${wordArrayList})</div>
+      <div>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</div>
     `
     this.element.appendChild(section);
   }
 
-  setFictionWord() {
+  setTrustWord(info) {
+    let result = info.json.result;
+    let count = result.trust_cnt;
+    let wordArrayList = result.trust_words.join(', ');
+
     let section = document.createElement('div');
     section.innerHTML = `
-      <div>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</div>
+      <div>${count}개의 긍정적인 단어가 있습니다. (${wordArrayList})</div>
     `
     this.element.appendChild(section);
   }
