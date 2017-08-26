@@ -1,53 +1,60 @@
-.manpower-box-wrapper {
+.manpower-rate-box {
+  box-sizing: border-box;
   position: fixed;
   top: 90px;
   right: 31px;
-  z-index: 999999999999999999999999;
-}
-.manpower-box {
-  background: rgba(29, 29, 29, 0.84);
-  color: #f7f7f7;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: sans-serif;
-  font-weight: bold;
-  box-shadow: 0 10px 41px rgba(0,0,0,0.5);
-
-  text-align: left;
-  line-height: 34px;
-}
-.manpower-rate-box {
   text-align: center;
-  width: 200px;
-  float: right;
+  width: 330px;
   margin-top: 50px;
+  background: rgba(35, 35, 35, 0.94);
+  color: #f7f7f7;
+  border-radius: 6px;
+  font-size: 17px;
+  font-family: sans-serif;
+  box-shadow: 0 10px 41px rgba(0,0,0,0.5);
+  line-height: 24px;
+  z-index: 999999999999999999999999;
+  font-weight: lighter;
+}
+.manpower-rate-box .critic {
+  text-align: left;
+  padding: 30px;
+}
+.manpower-rate-box .chart {
+  border-top: 1px solid #595959;
 }
 .manpower-rate-box h3 {
   color: #A0A0A0;
-  font-size: 13px;
+  font-size: 17px;
+  font-weight: lighter;
 }
 .manpower-rate-box h1 {
+  line-height: 60px;
   font-size: 40px;
+  font-weight: lighter;
+}
+.manpower-rate-box .chart-wrapper {
+  margin-top: 2px;
+  width: 100%;
+  height: 200px;
 }
 .manpower-rate-box .chart-wrapper .info {
   position: absolute;
-  line-height: 200px;
   text-align: center;
-  box-sizing: border-box;
-  width: 200px;
-}
-.manpower-rate-box .chart-wrapper .chart {
-
+  width: 100%;
+  padding-top: 60px;
 }
 .manpower-rate-box ul.actions li.action {
   list-style: none;
   display: inline-block;
   height: 66px;
-  border: 1px solid #979797;
-  min-width: 84px;
+  min-width: 110px;
   line-height: 66px;
   border-radius: 33px;
+}
+.manpower-rate-box .footer {
+  margin-top: 50px;
+  padding-bottom: 20px;
 }
 
 .fiction, .fishing {
