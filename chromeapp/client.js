@@ -9,11 +9,12 @@ class RateBox {
     this.element.classList.add('manpower-rate-box');
   }
 
+
   setNewsData(info) {
     let result = info.json.result;
     let personCnt = result.num_of_person;
     let rateOfNews = result.rate_of_news;
-    let percent = Math.random() * 100;
+    let percent = result.rate_of_news * 100;
 
     let section = document.createElement('div');
     section.innerHTML = `
@@ -61,7 +62,7 @@ class RateBox {
         .attr("class", "arc")
         .attr("fill", "url(#grad1)")
         .attr("d", arc);
-
+    this.element.innerHTML = '';
     this.element.appendChild(section);
   }
 

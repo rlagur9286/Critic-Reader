@@ -25,7 +25,48 @@ getPageInfo('', info => {
 
   var yesBtn = document.getElementById("yesBtn");
   yesBtn.addEventListener("click", () => {
-    
+    console.log('클릭 이벤트 받음');
+
+    let baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+    url = window.location.href;
+
+    let data = new FormData();
+    data.append('yes', 1);
+    data.append('news_url', url);
+
+    fetch(baseUrl, {
+      method : 'POST',
+      body : data
+    }).then(response => {
+      return response.json()
+    }).then(json => {
+      console.log(json);
+      let info = new Info(json);
+      rateBox.setNewsData(info);
+    });
+  });
+
+  var noBtn = document.getElementById("noBtn");
+  noBtn.addEventListener("click", () => {
+    console.log('클릭 이벤트 받음');
+
+    let baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+    url = window.location.href;
+
+    let data = new FormData();
+    data.append('no', 1);
+    data.append('news_url', url);
+
+    fetch(baseUrl, {
+      method : 'POST',
+      body : data
+    }).then(response => {
+      return response.json()
+    }).then(json => {
+      console.log(json);
+      let info = new Info(json);
+      rateBox.setNewsData(info);
+    });
   });
 
 
