@@ -37,13 +37,19 @@ class RateBox {
         <div>
           <h3>객관적인 기사인가요?</h3>
           <ul class="actions">
-            <li class="action" id = "yesBtn">네</li>
-            <li class="action" id = "noBtn">아니요</li>
+            <li class="action" id="btn-yes">네</li>
+            <li class="action" id="btn-no">아니요</li>
           </ul>
         </div>
       </div>
     `;
 
+    section.querySelector('#btn-yes').addEventListener('click', () => {
+
+    });
+    section.querySelector('#btn-no').addEventListener('click', () => {
+
+    });
 
     let arc = d3.svg.arc()
         .innerRadius(66)
