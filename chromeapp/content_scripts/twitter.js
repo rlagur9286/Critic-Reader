@@ -1,7 +1,0 @@
-
-
-let twitterMain = () => {
-
-};
-
-twitterMain();
