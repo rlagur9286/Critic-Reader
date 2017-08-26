@@ -44,8 +44,8 @@ class Post {
         container.style.border = '1px solid #a20404';
 
         bar.innerHTML = `
-            <div class="fc-status-bar fc-disputed"">
-                <span>이 링크는 거짓 정보를 담고 있습니다.</span> <a href="https://newstapa.org">판단 근거</a>            
+            <div class="fc-status-bar fc-disputed">
+                <span>이 링크는 거짓 정보를 담고 있습니다.</span> <a href="https://newstapa.org">판단 근거</a>
             </div>
         `;
     }

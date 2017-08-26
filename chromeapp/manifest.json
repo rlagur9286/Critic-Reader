@@ -13,39 +13,26 @@
   },
   "content_scripts": [{
       "matches": [
-        "http://www.facebook.com/*",
-        "https://www.facebook.com/*"
+        "http://news.naver.com/*"
       ],
       "css": ["main.css"],
       "js": [
         "client.js",
-        "content_scripts/facebook.js"
+        "content_scripts/naver.js"
       ],
       "run_at": "document_end",
       "all_frames": false
   }, {
-    "matches": [
-      "https://twitter.com/*"
-    ],
-    "css": ["main.css"],
-    "js": [
-      "client.js",
-      "content_scripts/twitter.js"
-    ],
-    "run_at": "document_end",
-    "all_frames": false
-  }, {
-    "matches": [
-      "http://*/*",
-      "https://*/*"
-    ],
-    "css": ["main.css"],
-    "js": [
-      "client.js",
-      "content_scripts/others.js"
-    ],
-    "run_at": "document_end",
-    "all_frames": false
+      "matches": [
+        "http://v.media.daum.net/*"
+      ],
+      "css": ["main.css"],
+      "js": [
+        "client.js",
+        "content_scripts/daum.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
   }],
   "permissions": [
     "activeTab",

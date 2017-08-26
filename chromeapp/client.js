@@ -1,34 +1,103 @@
 
 
-class Client {
-    constructor(props) {
-        this.STATUSES = {
-            NotVerified: 'not_verified',
-            Disputed: 'disputed',
-            Verified: 'verified'
-        };  // TODO : move to class property.s
 
-        let manifest = chrome.runtime.getManifest();
-        this.baseUrl = manifest.update_url ?
-            'https://???' :
-            'https://localhost:9004';
-    }
+class Info {
 
-    getStatus(url, callback) {
-        fetch(this.baseUrl + '/api/page?url=' + encodeURIComponent(url))
-            .then(response => response.json())
-            .then(json => {
-                if (callback) {
-                    callback(json)
-                }
-            })
-    }
+  constructor(json) {
+      this.json = json
+  }
 
-    getReportUrl(url) {
-        return this.baseUrl + '/report?url=' + encodeURIComponent(url)
-    }
+  hasFishngWord() {
+    return this.json.result.cnt > 0;
+  }
 
-    getRedirectorUrl(url) {
-        return this.baseUrl + '/redirect/by-url?url=' + encodeURIComponent(url)
-    }
+  hasFictionWord() {
+    return this.json.result.cnt > 0;
+  }
+
+  getTitle() {
+    return this.json['result']['header'];
+  }
+
+  getContent() {
+    return this.json['result']['text'];
+  }
 }
+
+
+class InfoBox {
+
+  constructor() {
+    this.element = document.createElement('div');
+    this.element.classList.add('manpower-news-info-box');
+    this.element.addEventListener('click', event =>{
+
+    });
+    document.addEventListener('keydown', event => {
+        if(event.keyCode === 27){
+          this.element.style.display = 'none';
+        }
+    })
+  }
+
+  setHasFishWord(info) {
+    console.log(info);
+    let result = info.json.result;
+    let count = result.cnt;
+    let wordArrayList = result.critic_words.join(', ');
+
+    let section = document.createElement('div');
+    section.innerHTML = `
+      <div>${count}개의 낚시성 단어가 있습니다. (${wordArrayList})</div>
+    `
+    this.element.appendChild(section);
+  }
+
+  setFictionWord() {
+    let section = document.createElement('div');
+    section.innerHTML = `
+      <div>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</div>
+    `
+    this.element.appendChild(section);
+  }
+
+  getElement() {
+    return this.element;
+  }
+}
+
+class Content {
+
+  constructor() {
+    this.element = document.createElement('div');
+  }
+
+  setHilightWord() {
+    // this.element.innerHTML('');
+  }
+
+  setFictionWord() {
+
+  }
+
+}
+
+
+let getPageInfo = (url, callback) => {
+
+  baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+  url = encodeURIComponent(window.location.href);
+
+  fetch(baseUrl + '?news_url=' + url).then(response => {
+    console.log(response);
+    return response.json();
+  }).then(json => {
+    let info = new Info(json);
+    callback(info);
+  })
+
+}
+
+
+
+console.log('client run');
