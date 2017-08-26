@@ -19,6 +19,10 @@ class RateBox {
   constructor() {
     this.element = document.createElement('div');
     this.element.classList.add('manpower-rate-box');
+    this.criticContainer = document.createElement('div');
+    this.chartContainer = document.createElement('div');
+    this.element.appendChild(this.criticContainer);
+    this.element.appendChild(this.chartContainer);
   }
 
   setNewsData(info) {
@@ -75,8 +79,8 @@ class RateBox {
         .attr("fill", "url(#grad1)")
         .attr("d", arc);
 
-    this.element.innerHTML = '';
-    this.element.appendChild(section);
+    this.chartContainer.innerHTML = '';
+    this.chartContainer.appendChild(section);
 
     this.startListen();
   }
@@ -95,7 +99,7 @@ class RateBox {
       <h3>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</h3>
     `;
 
-    this.element.appendChild(section);
+    this.criticContainer.appendChild(section);
   }
 
   setTrustWords(info) {
@@ -108,7 +112,7 @@ class RateBox {
       <div>${count}개의 긍정적인 단어가 있습니다. (${wordArrayList})</div>
     `;
 
-    this.element.appendChild(section);
+    this.criticContainer.appendChild(section);
   }
 
   getElement() {
