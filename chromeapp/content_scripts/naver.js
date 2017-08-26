@@ -1,37 +1,19 @@
 getPageInfo('', info => {
-  let infoBox = new InfoBox();
-  let content = new Content();
   let rateBox = new RateBox();
-  rateBox.setNewsData(info);
 
-  let wrapper = document.createElement('div');
-  wrapper.classList.add('manpower-box-wrapper');
-
-  if (info.hasFishngWord()) {
-    infoBox.setHasFishWord(info);
+  if (info.hasFishingWord()) {
+      rateBox.setFishingWords(info);
   }
 
   if (info.hasTrustWord()) {
-    infoBox.setTrustWord(info);
+      rateBox.setTrustWords(info);
   }
 
-  if(info.hasFishngWord() || info.hasTrustWord()) {
-    wrapper.appendChild(infoBox.getElement());
-  }
+  rateBox.setNewsData(info);
 
-  wrapper.appendChild(rateBox.getElement());
-  document.body.appendChild(wrapper);
+  document.body.appendChild(rateBox.getElement());
 
-
-  var yesBtn = document.getElementById("yesBtn");
-  yesBtn.addEventListener("click", () => {
-    
-  });
-
-
-  if(!info.hasFishngWord() && !info.hasTrustWord()) {
-    return;
-  }
+  rateBox.startListen();
 
   let bodyContainer = document.querySelector('#articleBodyContents');
   bodyContainer.innerHTML = info.getContent();
