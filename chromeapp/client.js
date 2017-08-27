@@ -170,7 +170,7 @@ class RateBox {
     section.classList.add('critic');
     section.innerHTML = `
       <h3>총 ${count}개의 의심 키워드 발견.</h3>
-      <p>:${wordArrayList}</p>
+      <p>: ${wordArrayList}</p>
     `;
 // <h3>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</h3>
     this.criticContainer.appendChild(section);
@@ -185,7 +185,7 @@ class RateBox {
     section.classList.add('critic');
     section.innerHTML = `
       <h3>총 ${count}개의 긍정적인 단어가 있습니다.</h3>
-      <p>:${wordArrayList}</p>
+      <p>: ${wordArrayList}</p>
     `;
 
     this.criticContainer.appendChild(section);
