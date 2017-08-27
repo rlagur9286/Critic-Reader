@@ -8,7 +8,7 @@ def get_news_header(url):
     #############################################################################
     source_code_from_url = urlopen(url)
     soup = BeautifulSoup(source_code_from_url, "lxml")
-    head = soup.find('div', {"class": "article_info"}).find('h3', {'id': 'articleTitle'}).text
+    head = soup.select('#articleTitle')
     return head
 
 
