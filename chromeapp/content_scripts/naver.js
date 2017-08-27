@@ -23,8 +23,14 @@ getPageInfo('', info => {
   boxContainer.classList.add('manpower-box-container');
   boxContainer.appendChild(rateBox.getElement());
   boxContainer.appendChild(starBox.getElement());
+
   document.body.appendChild(boxContainer);
 
+  document.addEventListener('keydown', e=> {
+    if (e.keyCode === 27) {
+      boxContainer.parentElement.removeChild(boxContainer);
+    }
+  })
 
   rateBox.startListen();
 

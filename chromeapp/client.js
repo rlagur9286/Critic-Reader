@@ -207,12 +207,12 @@ class RateBox {
         this.startListen();
       })
     });
-
-    document.addEventListener('keydown', e => {
-      if (e.keyCode === ESCAPE_KEY_CODE) {
-        this.element.parentNode.removeChild(this.element);
-      }
-    })
+    // 
+    // document.addEventListener('keydown', e => {
+    //   if (e.keyCode === ESCAPE_KEY_CODE) {
+    //     this.element.parentNode.removeChild(this.element);
+    //   }
+    // })
   }
 }
 
