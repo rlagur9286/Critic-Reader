@@ -184,7 +184,8 @@ class RateBox {
     let section = document.createElement('div');
     section.classList.add('critic');
     section.innerHTML = `
-      <h3>${count}개의 긍정적인 단어가 있습니다. (${wordArrayList})</h3>
+      <h3>총 ${count}개의 긍정적인 단어가 있습니다.</h3>
+      <p>:${wordArrayList}</p>
     `;
 
     this.criticContainer.appendChild(section);
@@ -207,7 +208,7 @@ class RateBox {
         this.startListen();
       })
     });
-    // 
+    //
     // document.addEventListener('keydown', e => {
     //   if (e.keyCode === ESCAPE_KEY_CODE) {
     //     this.element.parentNode.removeChild(this.element);
