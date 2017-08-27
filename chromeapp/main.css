@@ -16,6 +16,9 @@
   z-index: 999999999999999999999999;
   font-weight: lighter;
 }
+.manpower-rate-box .logo {
+  margin-top: 30px;
+}
 .manpower-rate-box .critic {
   text-align: left;
   padding: 30px;

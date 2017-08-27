@@ -19,6 +19,15 @@ class RateBox {
   constructor() {
     this.element = document.createElement('div');
     this.element.classList.add('manpower-rate-box');
+    this.element.innerHTML = `<svg class="logo" width="33px" height="31px" viewBox="0 0 33 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Page-1-Copy-2" transform="translate(1.000000, 0.000000)" stroke="#FFFFFF">
+              <polygon id="Stroke-1" points="24.5 13 18 6.5 24.5 0 31 6.5"></polygon>
+              <polyline id="Stroke-3" points="21 15.1763164 7.41227851 28.7640379 0 30 1.23596207 22.5877215 14.8236836 9"></polyline>
+              <path d="M12.6709591,30.5 L30.5890072,30.5" id="Stroke-7"></path>
+          </g>
+      </g>
+    </svg>`;
     this.criticContainer = document.createElement('div');
     this.chartContainer = document.createElement('div');
     this.element.appendChild(this.criticContainer);
