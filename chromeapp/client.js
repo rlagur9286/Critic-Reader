@@ -15,9 +15,72 @@ let rate = (value, callback) => {
 };
 
 
+class StarBox {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.classList.add('manpower-box');
+      this.element.classList.add('manpower-star-box');
+    }
+
+    setStar(info) {
+      let result = info.json.result;
+      let starCnt = result.star;
+      let email = result.email;
+      let lightOnStar = `
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 15 15" version="1.1">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Group-5-Copy-2" transform="translate(-42.000000, -49.000000)" fill="#FFF589">
+            <g id="Group-2" transform="translate(42.000000, 49.000000)">
+              <polygon id="Star" points="7.43122551 12.5153359 2.83847557 14.987193 3.71561275 9.75171558 3.33066907e-16 6.0439299 5.13485054 5.28008405 7.43122551 0.516689355 9.72760048 5.28008405 14.862451 6.0439299 11.1468383 9.75171558 12.0239754 14.987193"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+      `;
+
+      let lightOffStar = `
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 15 15" version="1.1">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Group-5-Copy-2" transform="translate(-105.000000, -49.000000)" fill="#535353">
+              <g id="Group-2" transform="translate(42.000000, 49.000000)">
+                <polygon id="Star-Copy-3" points="70.5343872 12.5153359 65.9416373 14.987193 66.8187745 9.75171558 63.1031617 6.0439299 68.2380123 5.28008405 70.5343872 0.516689355 72.8307622 5.28008405 77.9656128 6.0439299 74.25 9.75171558 75.1271372 14.987193"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+          `;
+
+      let starLenth = '';
+      for(let i = 0; i < starCnt; i++) {
+        starLenth += '<li>' + lightOnStar + '</li>';
+      }
+      for(let j = 0; j < 5 - starCnt; j++) {
+        starLenth += '<li>' + lightOffStar + '</li>';
+      }
+
+      let section = document.createElement('div');
+      section.innerHTML = `
+        <div>
+          <h3>${email} 기자의 별점</h3>
+        </div>
+        <div>
+          <ul class="stars">${starLenth} ${starCnt} / 5</ul>
+        </div>
+      `;
+
+      this.element.appendChild(section);
+    }
+
+    getElement() {
+      return this.element;
+    }
+}
+
+
 class RateBox {
   constructor() {
     this.element = document.createElement('div');
+    this.element.classList.add('manpower-box');
     this.element.classList.add('manpower-rate-box');
     this.element.innerHTML = `<svg class="logo" width="33px" height="31px" viewBox="0 0 33 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -49,12 +112,17 @@ class RateBox {
           </linearGradient>
         </svg>
         <div>
-          <h3>이 기사의 품질을 평가한 사람</h3>
+          <h3>이 기사의 신뢰도를 평가한 사람</h3>
           <h1>${personCnt}</h1>
         </div>
         <div class="chart-wrapper">
+          <svg class="bg-circle" width="202px" height="202px" viewBox="0 0 202 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <circle id="Oval-2-Copy-9" stroke="#979797" cx="101" cy="101" r="100"></circle>
+              </g>
+          </svg>
           <div class="info">
-            <h3>기사 품질 만족도</h3>
+            <h3>기사 신뢰도</h3>
             <h1>${Math.round(percent)}%</h1>
           </div>
         </div>
@@ -72,17 +140,17 @@ class RateBox {
     this.btnNo = section.querySelector('#btn-no');
 
     let arc = d3.svg.arc()
-        .innerRadius(96)
-        .outerRadius(100)
+        .innerRadius(98)
+        .outerRadius(102)
         .startAngle(0)
         .endAngle(percent / 50 * Math.PI);
 
     let svg = d3.select(section.querySelector('.chart-wrapper'))
         .append("svg")
         .attr("width", 330)
-        .attr("height", 200)
+        .attr("height", 204)
         .append("g")
-        .attr("transform", "translate(165, 100)");
+        .attr("transform", "translate(165, 101)");
 
     svg.append("path")
         .attr("fill", "url(#grad1)")
@@ -101,10 +169,8 @@ class RateBox {
     let section = document.createElement('div');
     section.classList.add('critic');
     section.innerHTML = `
-      <h3>총 ${count}개의 신뢰성 저하 단어가 있습니다.</h3>
+      <h3>총 ${count}개의 의심 키워드 발견.</h3>
       <p>:${wordArrayList}</p>
-      <br>
-
     `;
 // <h3>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</h3>
     this.criticContainer.appendChild(section);
