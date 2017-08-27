@@ -5,7 +5,12 @@
   "description": "Is cake a lie?",
   "version": "1.0",
   "icons": {
-    "16": "icon.png"
+    "16": "logo_16.png",
+    "48": "logo_48.png",
+    "128" : "logo_128.png"
+  },
+  "browser_action" : {
+    "default_icon" : "logo_48.png"
   },
   "background": {
     "scripts": [

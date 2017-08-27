@@ -27,7 +27,7 @@ class RateBox {
 
   setNewsData(info) {
     let result = info.json.result;
-    let personCnt = result.num_of_person;
+    let personCnt = result.num_of_person || 0;
     let percent = result.rate_of_news * 100;
 
     let section = document.createElement('div');
@@ -82,7 +82,6 @@ class RateBox {
     this.chartContainer.innerHTML = '';
     this.chartContainer.appendChild(section);
 
-    this.startListen();
   }
 
   setFishingWords(info) {
@@ -96,9 +95,9 @@ class RateBox {
       <h3>총 ${count}개의 신뢰성 저하 단어가 있습니다.</h3>
       <p>:${wordArrayList}</p>
       <br>
-      <h3>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</h3>
-    `;
 
+    `;
+// <h3>추측성 내용이나 확인되지 않은 취재원 내용을 담고 있습니다.</h3>
     this.criticContainer.appendChild(section);
   }
 
@@ -108,8 +107,9 @@ class RateBox {
     let wordArrayList = result.trust_words.join(', ');
 
     let section = document.createElement('div');
+    section.classList.add('critic');
     section.innerHTML = `
-      <div>${count}개의 긍정적인 단어가 있습니다. (${wordArrayList})</div>
+      <h3>${count}개의 긍정적인 단어가 있습니다. (${wordArrayList})</h3>
     `;
 
     this.criticContainer.appendChild(section);
@@ -123,11 +123,13 @@ class RateBox {
     this.btnYes.addEventListener('click', () => {
       rate('yes', json => {
         this.setNewsData(new Info(json));
+        this.startListen();
       })
     });
     this.btnNo.addEventListener('click', () => {
       rate('no', json => {
         this.setNewsData(new Info(json));
+        this.startListen();
       })
     });
 

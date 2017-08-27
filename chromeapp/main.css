@@ -45,6 +45,7 @@
   padding-top: 69px;
 }
 .manpower-rate-box ul.actions li.action {
+  cursor: pointer;
   list-style: none;
   display: inline-block;
   height: 66px;
@@ -59,4 +60,8 @@
 
 .fiction, .fishing {
   background: #FFBEB8;
+}
+
+.trust {
+  background : #E6FFED;
 }

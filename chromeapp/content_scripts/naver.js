@@ -1,4 +1,7 @@
 getPageInfo('', info => {
+  if(!info.json.success) {
+    return;
+  }
   let rateBox = new RateBox();
 
   if (info.hasFishingWord()) {
