@@ -1,9 +1,9 @@
 branch-defaults:
   default:
-    environment: reader
+    environment: critic
     group_suffix: null
 global:
-  application_name: hack_server
+  application_name: critic_reader
   branch: null
   default_ec2_keyname: null
   default_platform: Python 3.4
