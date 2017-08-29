@@ -5,7 +5,6 @@ import re
 from bs4 import BeautifulSoup
 from .news_parser import naver
 from .news_parser import daum
-from konlpy.tag import Twitter
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from urllib.request import urlopen

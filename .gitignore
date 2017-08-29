@@ -1,0 +1,17 @@
+# Ignore everything in this directory
+.idea/*
+__*
+
+# Except this file
+!.gitignore
+news/migrations/*
+ngrok.exe
+
+!__init__.py
+#cache
+__pycache__
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
