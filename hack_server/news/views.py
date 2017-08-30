@@ -45,7 +45,7 @@ def check_news(request):
             news_url = request.POST.get('news_url')
             yes = request.POST.get('yes')
             no = request.POST.get('no')
-
+            print(news_url)
             news = News.objects.get(url=news_url)
             if yes:
                 news.good += 1
