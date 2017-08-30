@@ -2,7 +2,7 @@ const ESCAPE_KEY_CODE = 27;
 
 
 let rate = (value, callback) => {
-  let url = 'http://ffac2887.ngrok.io/api/news/check/';
+  let url = 'http://ecc76211.ngrok.io/api/news/check/';
   let data = new FormData();
   data.append('news_url', window.location.href);
   data.append(value, 1);
@@ -242,7 +242,7 @@ class Info {
 
 
 let getPageInfo = (url, callback) => {
-  let baseUrl = 'http://ffac2887.ngrok.io/api/news/check/';
+  let baseUrl = 'http://ecc76211.ngrok.io/api/news/check/';
   url = encodeURIComponent(window.location.href);
 
   fetch(baseUrl + '?news_url=' + url).then(response => {
