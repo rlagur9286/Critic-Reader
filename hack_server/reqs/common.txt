@@ -3,5 +3,6 @@ djangorestframework
 markdown
 django-filter
 django-cors-headers
+lxml
 beautifulsoup4
 bs4
