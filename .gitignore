@@ -6,7 +6,7 @@ __*
 !.gitignore
 news/migrations/*
 ngrok.exe
-
+AWS_INFO.txt
 !__init__.py
 #cache
 __pycache__
